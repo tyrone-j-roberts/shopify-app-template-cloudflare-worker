@@ -1,0 +1,24 @@
+{
+	"name": "backend",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy --site-exclude=public/index-dev.html",
+		"dev": "ln -sf ../../frontend/index.html public/index-dev.html && wrangler dev -e=dev --port $BACKEND_PORT",
+		"start": "wrangler dev",
+		"test": "vitest",
+		"cf-typegen": "wrangler types",
+		"build": "ln -sf ../../frontend/dist/index.html public/index.html && ln -sf ../../frontend/dist/assets public/assets "
+	},
+	"devDependencies": {
+		"@cloudflare/vitest-pool-workers": "^0.8.19",
+		"typescript": "^5.5.2",
+		"vitest": "~3.2.0",
+		"wrangler": "^4.20.0"
+	},
+	"dependencies": {
+		"@shopify/shopify-api": "^11.13.0",
+		"@types/node": "^24.0.1",
+		"itty-router": "^5.0.18"
+	}
+}

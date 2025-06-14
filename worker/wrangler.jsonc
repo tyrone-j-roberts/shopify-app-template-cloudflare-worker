@@ -1,0 +1,66 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-06-13",
+	"compatibility_flags": ["nodejs_compat_v2"],
+	"observability": {
+		"enabled": true
+	},
+	/**
+	 * Smart Placement
+	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
+	 */
+	// "placement": { "mode": "smart" },
+
+	/**
+	 * Bindings
+	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including
+	 * databases, object storage, AI inference, real-time communication and more.
+	 * https://developers.cloudflare.com/workers/runtime-apis/bindings/
+	 */
+
+	/**
+	 * Environment Variables
+	 * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
+	 */
+	"vars": { 
+		"ENVIRONMENT": "production",
+		"APP_HOST": "<APP_HOST>",
+		"SHOPIFY_API_KEY": "<SHOPIFY_API_KEY>",
+		"SHOPIFY_API_SECRET": "<SHOPIFY_API_SECRET>",
+		"SHOPIFY_API_SCOPES": "write_products"
+	},
+	/**
+	 * Note: Use secrets to store sensitive data.
+	 * https://developers.cloudflare.com/workers/configuration/secrets/
+	 */
+
+	/**
+	 * Static Assets
+	 * https://developers.cloudflare.com/workers/static-assets/binding/
+	 */
+	"assets": { 
+		"directory": "./public/", 
+		"binding": "ASSETS",
+		"run_worker_first": true
+	},
+
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "d1-database-name",
+			"database_id": "<D1_DATABASE_ID>"
+		}
+	]
+
+	/**
+	 * Service Bindings (communicate between multiple Workers)
+	 * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
+	 */
+	// "services": [{ "binding": "MY_SERVICE", "service": "my-service" }]
+}
