@@ -1,6 +1,6 @@
 # Shopify App - Cloudflare Worker
 
-This is a template for building a Shopify app using Typescript, and React. It contains the basics for building a Shopify app for use as a [cloudflare worker](https://developers.cloudflare.com/workers/).
+This is a template for building a Shopify app using Typescript Cloudflare Worker backend and React frontend.  It contains the basics for building a Shopify app for use as a [cloudflare worker](https://developers.cloudflare.com/workers/) without Remix.
 
 Rather than cloning this repo, you can use your preferred package manager and the Shopify CLI with [these steps](#installing-the-template).
 
