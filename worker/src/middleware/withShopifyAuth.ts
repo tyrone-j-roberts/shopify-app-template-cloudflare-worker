@@ -13,9 +13,6 @@ export default async function withShopifyAuth(request: IRequest, env: Env) : Pro
 
     const [header, encodedPayload, signature] = authHeader.substring(7).split('.');
 
-    // console.log("header", header, encodedPayload, signature, authHeader);
-    // return error(401, JSON.stringify({header, encodedPayload, signature, authHeader}));
-
     let payloadData = JSON.parse(atob(encodedPayload));
 
     const nowTs = Date.now() / 1000;
