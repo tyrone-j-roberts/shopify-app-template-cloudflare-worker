@@ -75,6 +75,6 @@ export default async function withShopifyAuth(request: IRequest, env: Env) : Pro
         shop: accessTokenRow.shop,
         accessToken: accessTokenRow.access_token,
         state: accessTokenRow.state,
-        isOnline: accessTokenRow.is_online == 0
+        isOnline: accessTokenRow.is_online !== 0
     });
 }
