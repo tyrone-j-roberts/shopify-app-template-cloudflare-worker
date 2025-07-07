@@ -1,6 +1,6 @@
 import { AutoRouter, error, json, withCookies } from 'itty-router';
 import { RequestWithShopify, RequestWithShopifySession } from '../types';
-import withShopifyAuth from '../middleware/withShopifySession';
+import withShopifyAuth from '../middleware/withShopifyAuth';
 
 import { shopifyAuthBegin, shopifyAuthCallback } from './shopifyAuthHandler';
 

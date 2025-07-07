@@ -1,6 +1,7 @@
 import { error, IRequest } from "itty-router";
 import { Buffer } from "node:buffer";
 import { ShopifySessionRow, RequestWithShopifySession } from "../types";
+import { Session } from "@shopify/shopify-api";
 
 export default async function withShopifyAuth(request: IRequest, env: Env) : Promise<Response | void> {
 
@@ -69,8 +70,11 @@ export default async function withShopifyAuth(request: IRequest, env: Env) : Pro
         return error(401, "Unauthorized, no access token");
     }
 
-    (request as RequestWithShopifySession).shopifySession = {
+    (request as RequestWithShopifySession).shopifySession = new Session({
+        id: accessTokenRow.session_id,
         shop: accessTokenRow.shop,
-        accessToken: accessTokenRow.access_token
-    };
+        accessToken: accessTokenRow.access_token,
+        state: accessTokenRow.state,
+        isOnline: accessTokenRow.is_online == 0
+    });
 }
