@@ -58,3 +58,17 @@ pnpm create @shopify/app@latest --template "https://github.com/tyrone-j-roberts/
 ```
 
 This will clone the template and install the CLI in that project.
+
+### Setting up developer envronment
+
+In the `worker` directory, create file named `.dev.vars` and configure
+
+1. `ENVIROMENT` with the value of `dev`
+1. `SHOPIFY_API_SECRET` with the apps secret value you can find within your Shopify partner account.
+
+The `.dev.vars` file should look like this:
+
+```env
+ENVIRONMENT=dev
+SHOPIFY_API_SECRET=YOUR_SHOPIFY_APP_SECRET
+```
