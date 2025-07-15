@@ -9,7 +9,7 @@ export default async function withEnsureShopifyInstalled(request: RequestWithSho
 
     const url = URL.parse(request.url);
 
-    const isExitingIframe = !!url?.pathname.match(/^ExitIframe/i);
+    const isExitingIframe = !!url?.pathname.match(/^\/ExitIframe/i);
 
     if (!isExitingIframe && !shopifySessionRow) {
 
