@@ -21,15 +21,17 @@ export async function shopifyAuthCallback(request: RequestWithShopify, env: Env)
     return error(500, (err as Error).message);
   }
 
-  const insertStatement = env.DB.prepare(`
-        INSERT INTO ShopifySessions (session_id, shop, access_token, scope)
-        VALUES (?, ?, ?, ?)    
+  const insertStatement = env.APP_DB.prepare(`
+        INSERT INTO ShopifySessions (session_id, shop, access_token, scope, state, is_online)
+        VALUES (?, ?, ?, ?, ?)    
         ON CONFLICT(shop)
         DO UPDATE SET
           session_id = excluded.session_id,
           access_token = excluded.access_token,
-          scope = excluded.scope
-    `).bind(session.session.id, session.session.shop, session.session.accessToken, session.session.scope);
+          scope = excluded.scope,
+          state = excluded.state,
+          is_online = excluded.is_online
+    `).bind(session.session.id, session.session.shop, session.session.accessToken, session.session.scope, session.session.state, session.session.isOnline);
 
   try {
     await insertStatement.run();
