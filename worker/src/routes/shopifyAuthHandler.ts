@@ -21,7 +21,7 @@ export async function shopifyAuthCallback(request: RequestWithShopify, env: Env)
     return error(500, (err as Error).message);
   }
 
-  const insertStatement = env.APP_DB.prepare(`
+  const insertStatement = env.DB.prepare(`
         INSERT INTO ShopifySessions (session_id, shop, access_token, scope, state, is_online)
         VALUES (?, ?, ?, ?, ?)    
         ON CONFLICT(shop)
