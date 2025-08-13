@@ -23,7 +23,7 @@ export async function shopifyAuthCallback(request: RequestWithShopify, env: Env)
 
   const insertStatement = env.DB.prepare(`
         INSERT INTO ShopifySessions (session_id, shop, access_token, scope, state, is_online)
-        VALUES (?, ?, ?, ?, ?)    
+        VALUES (?, ?, ?, ?, ?, ?)    
         ON CONFLICT(shop)
         DO UPDATE SET
           session_id = excluded.session_id,
