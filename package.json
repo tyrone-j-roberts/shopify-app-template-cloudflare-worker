@@ -17,6 +17,8 @@
   "author": "tyroneroberts",
   "private": true,
   "workspaces": [
-    "extensions/*"
+    "extensions/*",
+    "worker/*",
+    "frontend/*"
   ]
 }
