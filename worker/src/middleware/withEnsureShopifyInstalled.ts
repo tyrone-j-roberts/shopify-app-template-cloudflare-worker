@@ -14,7 +14,7 @@ export default async function withEnsureShopifyInstalled(request: RequestWithSho
     if (!isExitingIframe && !shopifySessionRow) {
 
         if (request.query.embedded == '1') {
-            const redirectUri = encodeURIComponent(`https://${env.APP_HOST}/api/auth?shop=${shop}`);
+       		const redirectUri = `https://${request.shopify.config.hostName}/api/auth?shop=${shop}`;
             let queryParams = new URLSearchParams(request.query as Record<string, string>);
             queryParams.append('redirectUri', redirectUri);
 
