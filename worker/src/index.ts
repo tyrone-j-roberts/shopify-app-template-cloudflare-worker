@@ -21,12 +21,19 @@ import apiRouter from './routes/apiRouter';
 import withEnsureShopifyInstalled from './middleware/withEnsureShopifyInstalled';
 
 const appInit: RequestHandler<IRequest, CFArgs> = async (request: IRequest, env) => {
+	let appHost: string = env.APP_HOST;
+
+	if (!appHost) {
+		const parsedUrl = new URL(request.url);
+		appHost = parsedUrl.hostname;
+	}
+
 	request.shopify = shopifyApi({
 		apiKey: env.SHOPIFY_API_KEY,
 		apiSecretKey: env.SHOPIFY_API_SECRET,
 		apiVersion: LATEST_API_VERSION,
 		isEmbeddedApp: true,
-		hostName: env.APP_HOST,
+		hostName: appHost,
 		hostScheme: "https",
 	});
 };
