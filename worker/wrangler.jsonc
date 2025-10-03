@@ -30,9 +30,9 @@
 	 */
 	"vars": { 
 		"ENVIRONMENT": "production",
-		"APP_HOST": "<APP_HOST>",
-		"SHOPIFY_API_KEY": "<SHOPIFY_API_KEY>",
-		"SHOPIFY_API_SECRET": "<SHOPIFY_API_SECRET>",
+		"APP_HOST": "",
+		"SHOPIFY_API_KEY": "",
+		"SHOPIFY_API_SECRET": "",
 		"SHOPIFY_API_SCOPES": "write_products"
 	},
 	/**
