@@ -1,3 +1,3 @@
 [submodule "frontend"]
 	path = frontend
-	url = https://github.com/Shopify/shopify-frontend-template-react
+	url = https://github.com/digital-cake/cake-shopify-frontend-template-react

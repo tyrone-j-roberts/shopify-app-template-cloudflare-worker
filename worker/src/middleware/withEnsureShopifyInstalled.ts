@@ -1,4 +1,3 @@
-import { IRequest } from "itty-router";
 import { RequestWithShopify, ShopifySessionRow } from "../types";
 
 export default async function withEnsureShopifyInstalled(request: RequestWithShopify, env: Env) : Promise<void | Response> {
